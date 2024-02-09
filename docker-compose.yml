@@ -11,9 +11,9 @@ services:
     tty: true
     restart: unless-stopped
 
-  finebidb:
+  finedb:
     image: mysql:5.7-debian
-    container_name: finebidb
+    container_name: finedb
     volumes:
       - db-data:/var/lib/mysql
     command: --character-set-server=utf8 --collation-server=utf8_bin
@@ -25,23 +25,6 @@ services:
     ports:
       - "37798:3306"
     restart: unless-stopped
-  # finebi-db:
-  #   image: postgres:16
-  #   container_name: finebi-db
-  #   environment:
-  #     POSTGRES_USER: finebi
-  #     POSTGRES_PASSWORD: finebi
-  #     POSTGRES_DB: finedb
-  #   ports:
-  #     - "37798:5432"
-  #   volumes:
-  #     - db-data:/var/lib/postgresql/data
-  #   healthcheck:
-  #     test: ["CMD", "pg_isready", "-U", "finedb"]
-  #     interval: 10s
-  #     retries: 5
-  #     start_period: 5s
-  #   restart: unless-stopped
 
 volumes:
   data:
