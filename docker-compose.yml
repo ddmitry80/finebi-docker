@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  finebi:
+    build: .
+    container_name: finebi
+    ports:
+      - "37799:37799"
+    volumes:
+      - data:/usr/local/FineBI6.0/webapps/webroot
+    tty: true
+    restart: unless-stopped
+
+  # finebi-db:
+  #   image: mysql:5.7-debian
+  #   container_name: finebi-db
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   command: --character-set-server=utf8 --collation-server=utf8_bin
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: finedb
+  #     MYSQL_USER: finebi
+  #     MYSQL_PASSWORD: finebi
+  #   restart: unless-stopped
+  finebi-db:
+    image: postgres:16
+    container_name: finebi-db
+    environment:
+      POSTGRES_USER: finedb
+      POSTGRES_PASSWORD: finedb
+      POSTGRES_DB: finedb
+    ports:
+      - "37798:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "finedb"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+volumes:
+  data:
+  db-data:
