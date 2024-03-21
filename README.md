@@ -16,7 +16,7 @@ docker-compose down
 
 При первоначальной настройке указать External Database:
 Database Type: mysql
-Host: finebidb
+Host: finedb
 Port: 3306
 Database Name: finedb
 Username: finebi
