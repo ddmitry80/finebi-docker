@@ -28,12 +28,12 @@ docker-compose down
 Заходить по url: http://localhost:37799/webroot/decision#/
 
 При первоначальной настройке указать External Database:
-Database Type: mysql
-Host: finebidb
-Port: 3306
-Database Name: finedb
-Username: finebi
-Password: finebi
+Database Type: mysql  
+Host: finebidb  
+Port: 3306  
+Database Name: finedb  
+Username: finebi  
+Password: finebi  
 
 Если нужно пересобрать контейнер со своими настройками:
 - Скачиваем Linux версию FineBI по https://intl.finebi.com/download как linux_unix_FineBI6_0-EN.sh в каталог проекта
