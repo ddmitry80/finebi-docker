@@ -1,19 +1,29 @@
 docker-compose.yml и Dockerfile для запуска FineBI
 
 Инициализация контейнеров (в том числе и запуск):
+```
 docker-compose up
+```
 
 Или, если нужен запус как постоянного сервиса
+```
 docker-compose up -d
+```
 
 Остановка контейнеров:
+```
 docker-compose stop
+```
 
 Запуск контейнеров:
+```
 docker-compose start
+```
 
 Удаление контейнеров:
+```
 docker-compose down
+```
 
 Заходить по url: http://localhost:37799/webroot/decision#/
 
