@@ -1,6 +1,9 @@
 docker-compose.yml и Dockerfile для запуска FineBI
 
 Инициализация контейнеров (в том числе и запуск):
+docker-compose up
+
+Или, если нужен запус как постоянного сервиса
 docker-compose up -d
 
 Остановка контейнеров:
