@@ -27,7 +27,7 @@ docker-compose down
 
 Заходить по url: http://localhost:37799/webroot/decision#/
 
-При первоначальной настройке указать External Database:
+При первоначальной настройке указать имя и пароль пользователя, от которого будем пользоваться. Обычно это `admin`/`admin`. Далее указываем, что пользуемся External Database:  
 Database Type: `mysql`  
 Host: `finedb`  
 Port: `3306`  
