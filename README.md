@@ -36,8 +36,8 @@ Username: `finebi`
 Password: `finebi`
 
 Если нужно пересобрать контейнер со своими настройками:
-- Скачиваем Linux версию FineBI по https://intl.finebi.com/download как linux_unix_FineBI6_0-EN.sh в каталог проекта
-- Комментируем в docker-compose.yml строчку c image: для контейнера finebi
-- Раскомментируем строчку build . для контейнера finebi
-- Правим Dockerfile по своему усмотрению
+- Скачиваем Linux версию FineBI по https://intl.finebi.com/download как `linux_unix_FineBI6_0-EN.sh` в каталог проекта
+- Комментируем в `docker-compose.yml` строчку c `image:` для контейнера `finebi`
+- Раскомментируем строчку `build .` для контейнера `finebi`
+- Правим `Dockerfile` по своему усмотрению
 - `docker-compose up -d --build`
