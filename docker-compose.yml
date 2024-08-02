@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   finebi:
-    build: .
-    # image: ddmitry80/finebi:6.0.16.01-centos
+    # build: .
+    image: ddmitry80/finebi:6.1.0.01-centos
     container_name: finebi
     ports:
       - "37799:37799"
