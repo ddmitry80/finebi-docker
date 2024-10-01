@@ -10,7 +10,7 @@ services:
     ports:
       - "37799:37799"
     volumes:
-      - data:/usr/local/FineBI6.0/webapps/webroot
+      - data:/usr/local/FineBI6.1/webapps/webroot
     tty: true
     restart: unless-stopped
 
