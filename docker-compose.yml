@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
 
   finedb:
-    image: mysql:5.7-debian
+    image: mysql:8.0-debian
     container_name: finedb
     volumes:
       - db-data:/var/lib/mysql
