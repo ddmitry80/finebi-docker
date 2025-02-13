@@ -2,8 +2,8 @@ version: '3.3'
 
 services:
   finebi:
-    # build: .
-    image: ddmitry80/finebi:6.1.0.01-centos
+    build: .
+    # image: ddmitry80/finebi:6.1.0.01-centos
     container_name: finebi
     environment:
       - TZ=Europe/Moscow
@@ -19,6 +19,7 @@ services:
     container_name: finedb
     volumes:
       - db-data:/var/lib/mysql
+      - ./mysql-custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
     command: --character-set-server=utf8 --collation-server=utf8_bin
     environment:
       TZ: Europe/Moscow
