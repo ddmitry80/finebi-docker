@@ -2,8 +2,8 @@
 
 services:
   finebi:
-    # build: .
     image: ddmitry80/finebi:6.1.4.01-centos
+    build: .
     container_name: finebi
     environment:
       - TZ=Europe/Moscow
