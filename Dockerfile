@@ -4,11 +4,10 @@ RUN sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/*.repo && \
     sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/*.repo && \
     sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/*.repo
 
-# Install JDK 1.8
+# Install JDK 1.8 and tools
 RUN yum -y update && \
     yum -y install mc nano ncdu tmux wget curl net-tools && \
     yum -y install java-1.8.0-openjdk-devel && \
-    yum -y update && \
     yum -y clean all
 
 # Download from web
@@ -35,6 +34,8 @@ COPY Exam.db /usr/local/FineBI6.1/webapps/webroot/
 
 # Set the working directory
 WORKDIR ${path}
+
+EXPOSE 37799
 
 CMD ["run"]
 ENTRYPOINT ["./bin/finebi"]

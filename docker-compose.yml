@@ -1,25 +1,36 @@
-# version: '3.3'
-
 services:
+  # Reverse proxy — production-like setup (FineBI is typically deployed behind Nginx)
+  nginx:
+    image: nginx:1.29-alpine
+    container_name: finebi-nginx
+    ports:
+      - "37799:80"       # Main entry point: http://localhost:37799
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - finebi
+    restart: unless-stopped
+
+  # FineBI 6.1.4 application server (Tomcat)
   finebi:
     image: ddmitry80/finebi:6.1.4.01-centos
-    build: .
+    # build: .  # Uncomment to build from Dockerfile instead of pulling from Docker Hub
     container_name: finebi
     environment:
       - TZ=Europe/Moscow
     ports:
-      - "37799:37799"
+      - "37800:37799"    # Direct Tomcat access (bypass Nginx), for debugging only
     volumes:
       - data:/usr/local/FineBI6.1/webapps/webroot
     tty: true
     restart: unless-stopped
 
+  # External FineDB (MySQL) — FineBI metadata storage
   finedb:
-    image: mysql:8.0-debian
+    image: mysql:8.0.45-debian
     container_name: finedb
     volumes:
       - db-data:/var/lib/mysql
-      # - ./mysql-custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
     command: --character-set-server=utf8 --collation-server=utf8_bin
     environment:
       TZ: Europe/Moscow
@@ -28,7 +39,7 @@ services:
       MYSQL_USER: finebi
       MYSQL_PASSWORD: finebi
     ports:
-      - "37798:3306"
+      - "37798:3306"     # Direct MySQL access, for debugging only
     restart: unless-stopped
 
 volumes:
